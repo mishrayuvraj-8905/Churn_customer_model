@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class CustomerData(BaseModel):
@@ -21,3 +21,12 @@ class CustomerData(BaseModel):
     payment_method: str
     monthly_charges: float
     total_charges: float
+
+
+class PredictionResponse(BaseModel):
+    id: int
+    churn_prediction: int
+    churn_probability: float
+    risk_level: str
+
+    model_config = ConfigDict(from_attributes=True)
